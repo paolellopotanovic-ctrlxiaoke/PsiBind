@@ -1,0 +1,10 @@
+{
+  "gaussian_dim": 128,
+  "co_update_rounds": 3,
+  "dropout": 0.1,
+  "zero_init_output": true,
+  "architecture": "vg",
+  "direct_protein_residual": false,
+  "direct_protein_head": true,
+  "bypass_gaussian": false
+}

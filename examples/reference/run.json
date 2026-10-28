@@ -1,0 +1,16 @@
+{
+  "chain_id": "A",
+  "coordinate_model": 0,
+  "atoms": 602,
+  "residues": 76,
+  "surface_points": 1024,
+  "surface_version": "s1_surface_shrake_v1",
+  "model": "GSbind E11",
+  "release": "0.1.0",
+  "device": "cpu",
+  "checkpoint_sha256": "d942e1a4fbf28c924f5e0fe78381fc03d62bd22ddf655bd6fabcbd3a15d577d0",
+  "input_sha256": "d4a6812d8951cf6594e6a0763f089e35f5a80b62acb3c117b2c5565228a7b161",
+  "torch_version": "2.5.1",
+  "numpy_version": "1.26.4",
+  "hidden_saved": true
+}
