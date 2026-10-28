@@ -9,7 +9,7 @@ import pytest
 import torch
 
 from gsbind.inference import load_model, sha256
-from gsbind.structure import prepare_structure
+from gsbind.preprocessing.structure import prepare_structure
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -50,7 +50,7 @@ def test_cli_full_protein(tmp_path):
 
 def test_structure_mapping_and_mmcif(tmp_path, monkeypatch):
     # Isolate identifier handling; the CLI test exercises the real surface builder.
-    monkeypatch.setattr("gsbind.structure.build_s1_surface_cache_for_version",
+    monkeypatch.setattr("gsbind.preprocessing.structure.build_s1_surface_cache_for_version",
                         lambda item, **kwargs: {"surface_pos": torch.zeros(1, 3)})
     structure = gemmi.read_structure(str(ROOT / "examples/1ubq.pdb"))
     chain = structure[0][0]

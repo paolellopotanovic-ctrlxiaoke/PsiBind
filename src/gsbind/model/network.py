@@ -6,18 +6,18 @@ from typing import Any, Mapping
 
 import torch as pt
 
-from .modules.cross_scale import (
+from .components.cross_scale import (
     AttentionSurfaceToResiduePool,
 )
-from .modules.gaussian_projection import (
+from .components.gaussian_projection import (
     build_gaussian_projector,
 )
-from .modules.pair_gaussian import (
+from .components.pair_gaussian import (
     build_pair_gaussian_modules,
 )
-from .modules.global_context import GlobalContextFeedback
-from .modules.semantic_patch import SemanticConnectedPatchHead
-from .modules.surface_encoder import (
+from .components.global_context import GlobalContextFeedback
+from .components.semantic_patch import SemanticConnectedPatchHead
+from .components.surface_encoder import (
     DynamicSurfacePatchCluster,
     SurfacePointGVPGraphEncoder,
 )
@@ -532,7 +532,7 @@ class GaussianDirectModel(pt.nn.Module):
         ablation_no_residue_feedback: bool = False,
     ):
         super().__init__()
-        from .atom_encoding.atom_encoder import AtomEncoder
+        from .components.atom_encoder import AtomEncoder
 
         self.atom_encoder = AtomEncoder(encoder_config)
         residue_dim = int(encoder_config["residue_pool"]["N1"])

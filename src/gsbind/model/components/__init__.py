@@ -1,4 +1,4 @@
-"""Gaussian and geometric modules used by Gaussian-direct128."""
+"""Learned components of the GSbind architecture."""
 
 __all__ = [
     "AttentionSurfaceToResiduePool",

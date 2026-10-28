@@ -5,7 +5,9 @@ The atomic encoding implementation derives from PeSTo by Krapp et al.,
 protein binding interfaces," Nature Communications (2023).
 The upstream project is https://github.com/LBM-EPFL/PeSTo and distributes its code
 under CC BY-NC-SA 4.0. The corresponding license is retained in `LICENSE`.
-The copied/adapted atomic components are in `src/gaussian_direct/atom_encoding/`.
+The copied/adapted atomic components are `atom_encoder.py` and
+`atom_operations.py` in `src/gsbind/model/components/`, and `features.py` and
+`cleaning.py` in `src/gsbind/preprocessing/`.
 GSbind adds the Gaussian surface/residue interaction model and inference wrapper.
 
 `examples/1ubq.pdb` is the ubiquitin structure 1UBQ from the Protein Data Bank:

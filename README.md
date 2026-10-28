@@ -70,6 +70,22 @@ python -m pip install '.[test]'
 python -m pytest -q
 ```
 
+## Code layout
+
+```text
+src/gsbind/
+├── model/
+│   ├── network.py       # Complete GSbind architecture and forward pass
+│   ├── config.py        # Encoder architecture configuration
+│   └── components/      # Atom encoder, Gaussian projection, GVP and readout
+├── preprocessing/      # Structure cleaning, input features and surface generation
+├── inference.py        # Checkpoint loading, inference and output
+└── cli.py              # gsbind predict command
+```
+
+The atom encoder is one component of the complete model. Preprocessing prepares
+model inputs and does not contain learned model layers.
+
 ## License and attribution
 
 The existing CC BY-NC-SA 4.0 license is retained. See [LICENSE](LICENSE) and

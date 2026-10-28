@@ -8,9 +8,9 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from gaussian_direct.config import ATOM_ENCODER_CONFIG
-from gaussian_direct.model import GaussianDirectModel
-from .structure import prepare_structure
+from .model.config import ATOM_ENCODER_CONFIG
+from .model.network import GaussianDirectModel
+from .preprocessing.structure import prepare_structure
 
 
 def sha256(path):
@@ -81,7 +81,7 @@ def predict(structure, checkpoint, output, chain=None, device="cpu", save_hidden
     if save_hidden:
         np.savez_compressed(output / "hidden.npz", hidden=hidden,
                             residue_index=np.arange(len(rows), dtype=np.int64))
-    metadata.update({"model": "GSbind E11", "release": "0.1.0", "device": str(device),
+    metadata.update({"model": "GSbind E11", "release": "0.1.1", "device": str(device),
                      "checkpoint_sha256": sha256(checkpoint), "input_sha256": sha256(structure),
                      "torch_version": str(torch.__version__), "numpy_version": np.__version__,
                      "hidden_saved": bool(save_hidden)})

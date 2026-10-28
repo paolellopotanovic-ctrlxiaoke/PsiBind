@@ -1,6 +1,6 @@
 import torch as pt
 
-from .operations import StateUpdateLayer, StatePoolLayer, unpack_state_features
+from .atom_operations import StateUpdateLayer, StatePoolLayer, unpack_state_features
 
 
 class AtomEncoder(pt.nn.Module):

@@ -6,9 +6,9 @@ import gemmi
 import numpy as np
 import torch
 
-from gaussian_direct.atom_encoding.encoding import encode_features, encode_structure, extract_topology
-from gaussian_direct.atom_encoding.structure import clean_structure
-from gaussian_direct.atom_encoding.surface_cache import build_s1_surface_cache_for_version
+from .features import encode_features, encode_structure, extract_topology
+from .cleaning import clean_structure
+from .surface import build_s1_surface_cache_for_version
 
 
 def prepare_structure(path, chain=None):

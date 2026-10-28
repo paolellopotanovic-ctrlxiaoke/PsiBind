@@ -6,7 +6,7 @@ from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(description="GSbind: protein interface prediction from structure")
-    parser.add_argument("--version", action="version", version="GSbind 0.1.0")
+    parser.add_argument("--version", action="version", version="GSbind 0.1.1")
     commands = parser.add_subparsers(dest="command", required=True)
     predict = commands.add_parser("predict", help="Predict one protein chain from PDB or mmCIF")
     predict.add_argument("--structure", type=Path, required=True)
