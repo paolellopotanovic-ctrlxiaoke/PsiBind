@@ -8,26 +8,26 @@ import numpy as np
 import pytest
 import torch
 
-from gsbind.inference import load_model, sha256
-from gsbind.preprocessing.structure import prepare_structure
+from psibind.inference import load_model, sha256
+from psibind.preprocessing.structure import prepare_structure
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_checkpoint_and_dependency_boundary():
-    model = load_model(ROOT / "checkpoints/gsbind_e11.pt")
+    model = load_model(ROOT / "checkpoints/psibind_e11.pt")
     assert not model.training
     assert "lightning" not in sys.modules
     expected = (ROOT / "checkpoints/SHA256SUMS").read_text().split()[0]
-    assert sha256(ROOT / "checkpoints/gsbind_e11.pt") == expected
+    assert sha256(ROOT / "checkpoints/psibind_e11.pt") == expected
 
 
 def test_cli_full_protein(tmp_path):
     output = tmp_path / "predictions"
     subprocess.run([
-        sys.executable, "-m", "gsbind", "predict",
+        sys.executable, "-m", "psibind", "predict",
         "--structure", str(ROOT / "examples/1ubq.pdb"), "--chain", "A",
-        "--checkpoint", str(ROOT / "checkpoints/gsbind_e11.pt"),
+        "--checkpoint", str(ROOT / "checkpoints/psibind_e11.pt"),
         "--output", str(output), "--save-hidden",
     ], cwd=tmp_path, check=True, capture_output=True, text=True)
     with (output / "predictions.csv").open() as stream:
@@ -50,7 +50,7 @@ def test_cli_full_protein(tmp_path):
 
 def test_structure_mapping_and_mmcif(tmp_path, monkeypatch):
     # Isolate identifier handling; the CLI test exercises the real surface builder.
-    monkeypatch.setattr("gsbind.preprocessing.structure.build_s1_surface_cache_for_version",
+    monkeypatch.setattr("psibind.preprocessing.structure.build_s1_surface_cache_for_version",
                         lambda item, **kwargs: {"surface_pos": torch.zeros(1, 3)})
     structure = gemmi.read_structure(str(ROOT / "examples/1ubq.pdb"))
     chain = structure[0][0]

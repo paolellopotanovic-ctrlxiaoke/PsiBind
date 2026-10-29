@@ -1,6 +1,6 @@
-# GSbind
+# PsiBind
 
-GSbind predicts protein-binding interface probabilities from a single protein
+PsiBind predicts protein-binding interface probabilities from a single protein
 chain. This release contains the pretrained E11 model, structure preprocessing,
 and optional extraction of 128-dimensional residue representations.
 
@@ -22,10 +22,10 @@ python -m pip install . --no-deps
 From the downloaded repository directory:
 
 ```bash
-gsbind predict \
+psibind predict \
   --structure examples/1ubq.pdb \
   --chain A \
-  --checkpoint checkpoints/gsbind_e11.pt \
+  --checkpoint checkpoints/psibind_e11.pt \
   --output outputs/1ubq \
   --save-hidden
 ```
@@ -73,14 +73,14 @@ python -m pytest -q
 ## Code layout
 
 ```text
-src/gsbind/
+src/psibind/
 ├── model/
-│   ├── network.py       # Complete GSbind architecture and forward pass
+│   ├── network.py       # Complete PsiBind architecture and forward pass
 │   ├── config.py        # Encoder architecture configuration
 │   └── components/      # Atom encoder, Gaussian projection, GVP and readout
 ├── preprocessing/      # Structure cleaning, input features and surface generation
 ├── inference.py        # Checkpoint loading, inference and output
-└── cli.py              # gsbind predict command
+└── cli.py              # psibind predict command
 ```
 
 The atom encoder is one component of the complete model. Preprocessing prepares

@@ -6,9 +6,9 @@ protein binding interfaces," Nature Communications (2023).
 The upstream project is https://github.com/LBM-EPFL/PeSTo and distributes its code
 under CC BY-NC-SA 4.0. The corresponding license is retained in `LICENSE`.
 The copied/adapted atomic components are `atom_encoder.py` and
-`atom_operations.py` in `src/gsbind/model/components/`, and `features.py` and
-`cleaning.py` in `src/gsbind/preprocessing/`.
-GSbind adds the Gaussian surface/residue interaction model and inference wrapper.
+`atom_operations.py` in `src/psibind/model/components/`, and `features.py` and
+`cleaning.py` in `src/psibind/preprocessing/`.
+PsiBind adds the Gaussian surface/residue interaction model and inference wrapper.
 
 `examples/1ubq.pdb` is the ubiquitin structure 1UBQ from the Protein Data Bank:
 Vijay-Kumar S, Bugg CE, Cook WJ. "Structure of ubiquitin refined at 1.8 Å

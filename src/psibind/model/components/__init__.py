@@ -1,4 +1,4 @@
-"""Learned components of the GSbind architecture."""
+"""Learned components of the PsiBind architecture."""
 
 __all__ = [
     "AttentionSurfaceToResiduePool",

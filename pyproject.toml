@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gsbind-inference"
-version = "0.1.1"
-description = "GSbind protein interface prediction and residue representation extraction"
+name = "psibind-inference"
+version = "0.1.2"
+description = "PsiBind protein interface prediction and residue representation extraction"
 requires-python = ">=3.10,<3.13"
 dependencies = ["torch>=2.1,<2.6", "numpy>=1.24,<2", "gemmi>=0.7,<0.8", "scipy>=1.10,<1.16"]
 
@@ -13,7 +13,7 @@ dependencies = ["torch>=2.1,<2.6", "numpy>=1.24,<2", "gemmi>=0.7,<0.8", "scipy>=
 test = ["pytest>=8,<10"]
 
 [project.scripts]
-gsbind = "gsbind.cli:main"
+psibind = "psibind.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

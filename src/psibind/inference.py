@@ -9,7 +9,7 @@ import numpy as np
 import torch
 
 from .model.config import ATOM_ENCODER_CONFIG
-from .model.network import GaussianDirectModel
+from .model.network import PsiBindModel
 from .preprocessing.structure import prepare_structure
 
 
@@ -32,10 +32,11 @@ def load_model(checkpoint, device="cpu"):
     if not checkpoint.is_file():
         raise FileNotFoundError(f"Checkpoint does not exist: {checkpoint}")
     payload = torch.load(checkpoint, map_location="cpu", weights_only=True)
-    if payload.get("format") != "gsbind_inference_v1":
-        raise ValueError("Expected a GSbind inference release checkpoint")
+    # Accept the previous release format so existing tensor-only weights still load.
+    if payload.get("format") not in {"psibind_inference_v1", "gsbind_inference_v1"}:
+        raise ValueError("Expected a PsiBind inference release checkpoint")
     config = payload["model_config"]
-    model = GaussianDirectModel(encoder_config=ATOM_ENCODER_CONFIG, **config)
+    model = PsiBindModel(encoder_config=ATOM_ENCODER_CONFIG, **config)
     model.load_state_dict(payload["model_state"], strict=True)
     model.eval().to(device)
     return model
@@ -81,7 +82,7 @@ def predict(structure, checkpoint, output, chain=None, device="cpu", save_hidden
     if save_hidden:
         np.savez_compressed(output / "hidden.npz", hidden=hidden,
                             residue_index=np.arange(len(rows), dtype=np.int64))
-    metadata.update({"model": "GSbind E11", "release": "0.1.1", "device": str(device),
+    metadata.update({"model": "PsiBind E11", "release": "0.1.2", "device": str(device),
                      "checkpoint_sha256": sha256(checkpoint), "input_sha256": sha256(structure),
                      "torch_version": str(torch.__version__), "numpy_version": np.__version__,
                      "hidden_saved": bool(save_hidden)})

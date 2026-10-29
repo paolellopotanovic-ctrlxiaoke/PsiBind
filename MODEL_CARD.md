@@ -1,4 +1,4 @@
-# GSbind E11
+# PsiBind E11
 
 **Task.** Residue-level protein interface prediction from one protein chain,
 without a binding partner as input. The released output is the protein-interface

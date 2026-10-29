@@ -514,7 +514,7 @@ class ParameterMatchedResidueMLP(pt.nn.Module):
         return self.network(residue_embedding)
 
 
-class GaussianDirectModel(pt.nn.Module):
+class PsiBindModel(pt.nn.Module):
 
     def __init__(
         self,
@@ -736,7 +736,7 @@ class GaussianDirectModel(pt.nn.Module):
 
             batched_surface = isinstance(surface_cache, list)
             if surface_cache is None:
-                raise ValueError("GaussianDirectModel requires a compact surface cache.")
+                raise ValueError("PsiBindModel requires a compact surface cache.")
             if not batched_surface:
                 if residue_centers is None:
                     residue_centers = self._residue_centers(X, M)
@@ -812,7 +812,7 @@ class GaussianDirectModel(pt.nn.Module):
                 decoded, gaussian_update, gaussian_feature
             )
         if surface_cache is None:
-            raise ValueError("GaussianDirectModel requires a compact surface cache.")
+            raise ValueError("PsiBindModel requires a compact surface cache.")
         if not batched_surface:
             if residue_centers is None:
                 residue_centers = self._residue_centers(X, M)
